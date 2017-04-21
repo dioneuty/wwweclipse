@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+</style>
+<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+	$('document').ready(function(){
+		$('#content').load('ex03.jsp?msg=abcdefg'); //ex01.html의 body태그 안의 내용물을 가져와서 innerHTML로 뿌림
+	});
+</script>
+</head>
+<body>
+	<h1>다음은 네이버 페이지입니다</h1>
+	<div id="content"></div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	window.onload=function(){
+		var h1=document.querySelector('h1');
+		var xhr=new XMLHttpRequest();
+		
+		/* xhr.onreadystatechange(); */
+		/* 내장된 onreadystatchange 재정의 */
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4 && xhr.status==200){
+				var msg=xhr.responseText;
+				h1.innerText=msg;				
+			}
+			/* h1.innerText=xhr.responseText; */
+			/* 
+				xhr.readyState=0 접속 전
+				xhr.readyState=1 클라이언트가 서버에 접속
+				xhr.readyState=2 클라이언트가 (서버에) Request 던질 때
+				xhr.readyState=3 실행 단계(서버 연산)
+				xhr.readyState=4 완료 후 클라이언트가 (서버로부터) Response 받은 후 메시지를 뿌려줄 때
+			*/
+			console.log('msg:'+msg+'\n'+xhr.readyState);
+		};
+		xhr.open('get','msg.txt',true);
+		xhr.send();
+	};
+</script>
+</head>
+<body>
+	<h1></h1>
+</body>
+</html>

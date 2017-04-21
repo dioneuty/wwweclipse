@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<style>
+	#header, #footer{
+		background-color: gray;
+	}
+</style>
+<script type="text/javascript">
+	var content, form, id, pw;
+	window.onload=function(){
+		content=document.querySelector("#content");
+		form=document.querySelector("#content>form");
+		id=document.querySelectorAll('#content>form>p>input')[0];
+		pw=document.querySelectorAll('#content>form>p>input')[1];
+		form.addEventListener("submit", loadFunc);
+	};
+	function loadFunc(event){
+		event.preventDefault();
+		/* alert("페이지 이동 안함"); */
+		login();
+	}
+	function login(){
+		var url='http://localhost:8080/JGMDay17-ajav/login.jsp?id='+id.value+"&pw="+pw.value;
+		var xhr=new XMLHttpRequest();
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4 && xhr.status==200){
+				console.log('msg:\n'+xhr.readyState);
+				console.log(xhr.responseText);
+				//xml, json;
+				//if(xhr.responseText!='로그인 실패'){
+					content.innerHTML=xhr.responseText;					
+				//}
+			}
+		};
+		/* async, true=비동기, false=동기 */
+		xhr.open('get', url, true);
+		xhr.send();/* 서버로 전송 */
+	}
+</script>
+<body>
+	<!-- ajax 비동기 통신 -->
+	<div id="header">
+		<h1>한빛교육센터</h1>
+	</div>
+	
+	<div id="content">
+		<form action="login.jsp">
+			<p>
+				<label>id</label><input type="text" name="id">
+			</p>
+			<p>
+				<label>pw</label><input type="text" name="pw">
+			</p>
+			<p>
+				<input type="submit" value="로그인">
+				<input type="reset" value="취소">
+			</p>
+		</form>
+	</div>
+	
+	<div id="footer">
+		<p>® Hanbit Corp.</p>
+	</div>
+</body>
+</html>

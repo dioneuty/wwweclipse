@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <login>
+        <id>admin</id>
+        <result>1</result>
+<!--        0: fail 1: success-->
+    </login>
+</data>
+
+
+
+<!--
+JSON방식의 항목 나열 방식
+{'login': {'id':'admin, 'result':1 } };
+{'login':[{'id':'admin','result':1}]};
+-->

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	*{
+		margin: 0px;
+		padding: 0px;
+	}
+	#menu{
+		background-color: red;
+	}
+	#footer{
+		background-color: gray;
+	}
+	#content>#board{
+		width: 430px; /* 136*3 */
+		height: 160px;
+		margin: 0px auto;
+		border: 3px solid gray;
+		overflow: auto;
+		
+	}
+	#content>#borad>ul{
+		width: 10000px;
+	}
+	#content>#board>ul>li{
+		float: left;
+		list-style: none;
+	}
+</style>
+<script type="text/javascript">
+	var board, xhr;
+	var url="./guest/mydata.json";
+	window.onload=function(){
+		board=document.querySelector("#board");
+		start();
+	};
+	function start(){
+		xhr=new XMLHttpRequest();
+		xhr.onreadystatechange=imgLoading;
+		xhr.open("get", url, true);
+		xhr.send();
+	}
+	function imgLoading(){
+		if(xhr.readyState==4&&xhr.status==200){
+			var msg='<ul>';
+			var txt=xhr.responseText;
+			var obj=JSON.parse(txt);
+			for(var i=0; i<obj.data.length;i++){
+				msg+='<li>';
+				msg+='<img src="imgs/small/';
+				msg+=obj.data[i].src;
+				msg+='"/>';
+				msg+='</li>';
+			}
+			msg+='</ul>';
+			board.innerHTML=msg;
+		}
+	}
+</script>
+</head>
+<body>
+	<div id="header">
+			<h1>한빛교육센터</h1>
+	</div>
+	<div id="menu">
+		<a href="#">menu1</a>
+		<a href="#">menu2</a>
+		<a href="#">menu3</a>
+		<a href="#">menu4</a>
+	</div>
+	<div id="content">
+		<h1>이미지 게시판</h1>
+		<div id="board"></div>
+	</div> 
+	<div id="footer">
+		<p>한빛이엔아이</p>
+		<p>copyright 2017 한빛교육센터 all rights reserved</p>
+	</div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+		 <script type="text/javascript" language="javascript">
+        
+        var id, pw, form;
+       window.onload=function(){
+           form=document.querySelector('#header>form');
+           id=form.querySelectorAll("input")[0];
+           pw=form.querySelectorAll("input")[1];
+         
+      
+        form.onsubmit=function(e){
+            e.preventDefault();
+            
+            var url='login.xml';
+            var xhr=new XMLHttpRequest();
+            
+            xhr.onreadystatechange=function(){
+                if(xhr.status==200&&xhr.readyState==4){
+                    var msg = xhr.responseXML;
+                    var login = msg.getElementsByTagName('login')[0];
+                    var result = login.children[1].childNodes[0].nodeValue;
+                    var user = login.children[0].childNodes[0].nodeValue;
+                    if(result==1){
+                        form.outerHTML='<h1>'+user+'님 환영합니다</h1>';
+                    }
+                  
+                }
+            };
+            xhr.open('get',url,true);
+            xhr.send();
+        };
+     };       
+        
+        </script>
+	</head>
+
+	<body>
+       <div id="header">
+			<h1>한빛교육센터</h1>
+			<form action="">
+			    <label for="">id</label><input type="text">
+                <label for="">pw</label><input type="text">
+                <button>로그인</button>
+			</form>
+		</div>
+		<div id="menu">
+			<a href="#">menu1</a>
+			<a href="#">menu2</a>
+			<a href="#">menu3</a>
+			<a href="#">menu4</a>
+		</div>
+		<div id="content">
+			<div id="banner">
+                <ul>
+                    <li><img src="imgs/big01.jpg" alt="img1"></li>
+                </ul>
+				<a href="#">prev</a>
+				<a href="#">next</a>
+			</div>
+		</div>
+		<div id="footer">
+			<p>한빛이엔아이</p>
+			<p>copyright 2017 한빛교육센터 all rights reserved</p>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+	//get방식 구조
+	//http://api.jquery.com/jQuery.get/
+	/* function get(url,data,success,dataType){
+		$.ajax({
+			'url':url
+			'data':data,
+			'success':success,
+			'dataType':dataType
+		});
+		
+	get('a',null,function(){})
+	} */
+	
+	$(document).ready(function(){
+		$('button').click(function(){
+			var id=$('input[type="text"]').val();
+			var pw=$('input[type="password"]').val();
+			console.log('id:'+id+' pw:'+pw);
+			
+			
+			/* $.get('test.html',null,function(data){ */
+			$.post("myData01.xml",{'id':id,'pw':pw},function(data){
+				var data_id=$(data).find('id').text();
+				$('span').eq(0).text(data_id);
+				var data_pw=$(data).find('pw').text();
+				$('span').eq(1).text(data_pw);
+				var data_name=$(data).find('name').text();
+				$('span').eq(2).text(data_name);
+			});
+				/* $('div').html(data); */
+			
+			
+		});
+	});//ready end
+</script>
+</head>
+<body>
+	<h1>Post방식 파싱</h1>
+	<p>id:<input type="text"/></p>
+	<p>pw:<input type="password"/></p>
+	<button>파싱</button>
+	<div>
+		<h2>id:<span></span></h2>
+		<h2>pw:<span></span></h2>
+		<h2>name:<span></span></h2>
+	</div>
+</body>
+</html>

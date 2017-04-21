@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+</style>
+<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+	$('document').ready(function() {
+		//jquery 비동기 통신 .ajax();
+		$('button').click(function() {
+			var url = 'data02.json';
+			var obj = {
+				'type' : 'get', //파라미터 값 가져오는 방식 여부
+				'async' : true, //비동기 방식 사용 여부, false: 동기
+				'error' : function(xhr, status, error) { //error 콜백 
+					console.log(status + ":" + error);
+				},
+				'success' : function(data, status, xhr) { //success 콜백
+					//alert(data);//OBJECT XML Document xml 객체를 실제로 파싱받는지 확인
+					var arr = data.data; //json 안의 배열이 나옴
+					var id = data.data[0].id;
+					var pw = data.data[0].password;
+					var name = data.data[0].name;
+					var arr = [ id, pw, name ];
+					$('span').each(function(idx, ele) {//0 1 2, span span span
+						$(this).text(arr[idx]);
+					})
+				}
+			};
+			$.ajax(url, obj); // url, json(xhr.open의 속성값들과 비슷)
+		});
+
+	});
+</script>
+</head>
+
+<body>
+			<h1>유저 정보</h1>
+			<button>xml파싱</button>
+			<p>
+						id:<span></span>
+			</p>
+			<p>
+						pw:<span></span>
+			</p>
+			<p>
+						name:<span></span>
+			</p>
+</body>
+
+</html>

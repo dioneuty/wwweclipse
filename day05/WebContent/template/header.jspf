@@ -1,0 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+	<table width="100%" cellspacing="10">
+		<!-- header -->
+		<%
+			String contextPath= request.getContextPath();
+		%>
+		<tr>
+			<td>
+			<a href="<%=contextPath %>/">
+			<img alt="logo" src="<%=contextPath %>/imgs/logo2.jpg">
+			</a>
+			</td>
+		</tr>

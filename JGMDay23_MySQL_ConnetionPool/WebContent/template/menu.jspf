@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	String root=request.getContextPath();
+	/* 메뉴를 반복적으로 누를 때 깨질 위험이 있어서 컨텍스트 경로를 붙여넣기 하였다 */
+	Boolean result=(Boolean)session.getAttribute("result");
+%>
+   <div id="menu">
+      <ul>
+      	
+         <li><a href="<%=root %>/guest/list.hb">게시판</a></li>
+         <%if( result == null || !result){ %><!-- 로그아웃 상태일 때 -->
+         <li><a href="<%=root %>/user/login.hb">로그인</a></li>
+         <%}else{ %><!-- 로그인 상태일 때 -->
+         <li><a href="<%=root %>/user/logout.hb">로그아웃</a></li>
+         <%} %>
+         <li><a href="">menu3</a></li>
+         <li><a href="">menu4</a></li>
+      </ul>
+   </div>;

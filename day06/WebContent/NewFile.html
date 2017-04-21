@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body, body *{
+            margin: 0px;
+            padding: 0px;
+        }
+        body>div{
+            margin: 0px auto;
+           /* border-color: black;
+            border-style: dotted;
+            border-width: 1px;*/
+            width: 70%;
+        }
+        body>div:nth-child(2){
+/*            overflow: hidden;*/
+/*            float: left;*/
+            background-color: red;
+        }
+        body>div:nth-child(2)>ul{
+            background-color: darkkhaki;
+            width: 358px;
+            margin: auto;
+        }
+        body>div:nth-child(2)>ul>li{
+            margin: 0px auto;
+            float: left;
+            list-style: none;
+/*            북동남서*/
+            margin-top:0px;
+            margin-right: 50px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+        }
+        body>div:nth-child(2)>ul>li:nth-child(4){
+            margin-right: 0px;
+        }
+        body>div:nth-child(2)>div{
+            clear: both;
+        }
+        body>div:nth-child(2)>ul>li>a{
+            text-decoration: none;
+            color: white;
+            border-left: white 1px solid;
+            border-right: white 1px solid;
+        }
+        body>div:nth-child(3){
+            clear: both;
+            height: 300px;
+        }
+        body>div:nth-child(4){
+            
+            height: 100px;
+            background-color: darkgrey;
+        }
+        body>div:nth-child(4)>p{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <img src="imgs/naver.gif" alt="logo">
+    </div>
+    <div id="menu">
+        <ul>
+            <li><a href="#">menu1</a></li>
+            <li><a href="#">menu2</a></li>
+            <li><a href="#">menu3</a></li>
+            <li><a href="#">menu4</a></li>
+        </ul>
+        <div></div>
+    </div>
+    <div id="content">
+        <h1>환영합니다</h1>
+    </div>
+    <div id="footer"> 
+        <p>copyright2015 한빛교육센터 right reserved. </p>
+    </div>
+</body>
+</html>
